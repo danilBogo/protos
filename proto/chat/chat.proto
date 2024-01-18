@@ -1,0 +1,41 @@
+﻿syntax = "proto3";
+import "google/protobuf/empty.proto";
+
+package chat;
+
+option go_package = "chat.v1;chatv1";
+
+service Chat {
+  rpc Send(SendRequest) returns (google.protobuf.Empty);
+  rpc Join(JoinRequest) returns (JoinResponse);
+  rpc Leave(LeaveRequest) returns (google.protobuf.Empty);
+  rpc GetMessages(GetMessagesRequest) returns (stream GetMessagesResponse);
+}
+
+message SendRequest {
+  string username = 1;
+  string text = 2;
+  string chat_id = 3;
+}
+
+message JoinRequest {
+  string username = 1;
+}
+
+message JoinResponse {
+  string chat_id = 1;
+}
+
+message LeaveRequest {
+  string username = 1;
+  string chat_id = 2;
+}
+
+message GetMessagesRequest {
+  string chat_id = 1;
+}
+
+message GetMessagesResponse {
+  string username = 1;
+  string text = 2;
+}
