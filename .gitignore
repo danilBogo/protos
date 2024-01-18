@@ -37,9 +37,6 @@ _vendor/
 # Compiled Ignition files
 ignition/
 
-# Compiled Proto files
-*.pb.go
-
 # Log files
 *.log
 
